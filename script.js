@@ -51,14 +51,14 @@ const CAT_1_PRODUCTS = [
         name: 'Customised set 2 -',
         price: 250,
         description: 'name initials, sehra, kallre, chuda, doli, ghatbandhan',
-        cover: 'Mainset2/c1_p2_1.jpg',
+        cover: 'Mainset2/c1_p2_1.JPG',
         gallery: [
-            'Mainset2/c1_p2_1.jpg',
-            'Mainset2/c1_p2_2.jpg',
-            'Mainset2/c1_p2_3.jpg',
-            'Mainset2/c1_p2_4.jpg',
-            'Mainset2/c1_p2_5.jpg',
-            'Mainset2/c1_p2_6.jpg'
+            'Mainset2/c1_p2_1.JPG',
+            'Mainset2/c1_p2_2.JPG',
+            'Mainset2/c1_p2_3.JPG',
+            'Mainset2/c1_p2_4.JPG',
+            'Mainset2/c1_p2_5.JPG',
+            'Mainset2/c1_p2_6.JPG'
         ]
     },
     {
@@ -66,13 +66,13 @@ const CAT_1_PRODUCTS = [
         name: 'Sehra & kallere 1 - ',
         price: 250,
         description: 'Sparkling glitter accents.',
-        cover: 'Mainset3/c1_p3_1.jpg',
+        cover: 'Mainset3/c1_p3_1.JPG',
         gallery: [
-            'Mainset3/c1_p3_1.jpg',
-            'Mainset3/c1_p3_2.jpg',
-            'Mainset3/c1_p3_3.jpg',
-            'Mainset3/c1_p3_4.jpg',
-            'Mainset3/c1_p3_5.jpg'
+            'Mainset3/c1_p3_1.JPG',
+            'Mainset3/c1_p3_2.JPG',
+            'Mainset3/c1_p3_3.JPG',
+            'Mainset3/c1_p3_4.JPG',
+            'Mainset3/c1_p3_5.JPG'
         ]
     },
     {
@@ -80,18 +80,18 @@ const CAT_1_PRODUCTS = [
         name: 'sehra & kallere 2 -',
         price: 250,
         description: ' mehroon edition.',
-        cover: 'Mainset4/c1_p4_1.jpg',
+        cover: 'Mainset4/c1_p4_1.JPG',
         gallery: [
-            'Mainset4/c1_p4_1.jpg',
-            'Mainset4/c1_p4_2.jpg',
-            'Mainset4/c1_p4_3.jpg',
-            'Mainset4/c1_p4_4.jpg'
+            'Mainset4/c1_p4_1.JPG',
+            'Mainset4/c1_p4_2.JPG',
+            'Mainset4/c1_p4_3.JPG',
+            'Mainset4/c1_p4_4.JPG'
         ]
     }
 ];
 
 // =============================================================================
-//  SECTION 4: PRODUCTS FOR CATEGORY 2
+// 📦 SECTION 4: PRODUCTS FOR CATEGORY 2
 // =============================================================================
 const CAT_2_PRODUCTS = [
     {
@@ -99,14 +99,14 @@ const CAT_2_PRODUCTS = [
         name: 'Brown cat eye',
         price: 250,
         description: 'Intricate designs for the big day.',
-        cover: 'Noorset1/c2_p1_2.jpg',
+        cover: 'Noorset1/c2_p1_2.JPG',
         gallery: [
-            'Noorset1/c2_p1_1.jpg',
-            'Noorset1/c2_p1_2.jpg',
-            'Noorset1/c2_p1_3.jpg',
-            'Noorset1/c2_p1_4.jpg',
-            'Noorset1/c2_p1_5.jpg',
-            'Noorset1/c2_p1_6.jpg'
+            'Noorset1/c2_p1_1.JPG',
+            'Noorset1/c2_p1_2.JPG',
+            'Noorset1/c2_p1_3.JPG',
+            'Noorset1/c2_p1_4.JPG',
+            'Noorset1/c2_p1_5.JPG',
+            'Noorset1/c2_p1_6.JPG'
         ]
     },
     {
@@ -114,13 +114,13 @@ const CAT_2_PRODUCTS = [
         name: 'brown cat eye with glitter',
         price: 250,
         description: 'Bold colors and statement pieces.',
-        cover: 'Noorset2/c2_p2_1.jpg',
+        cover: 'Noorset2/c2_p2_1.JPG',
         gallery: [
-            'Noorset2/c2_p2_1.jpg',
-            'Noorset2/c2_p2_2.jpg',
-            'Noorset2/c2_p2_3.jpg',
-            'Noorset2/c2_p2_4.jpg',
-            'Noorset2/c2_p2_5.jpg'
+            'Noorset2/c2_p2_1.JPG',
+            'Noorset2/c2_p2_2.JPG',
+            'Noorset2/c2_p2_3.JPG',
+            'Noorset2/c2_p2_4.JPG',
+            'Noorset2/c2_p2_5.JPG'
         ]
     },
     {
@@ -141,16 +141,15 @@ const CAT_2_PRODUCTS = [
         name: 'Noor VIP Red Set',
         price: 250,
         description: 'Modern abstract hand-painted art.',
-        cover: 'Noorset4/c2_p4_1.jpg',
+        cover: 'Noorset4/c2_p4_1.JPG',
         gallery: [
-            'Noorset4/c2_p4_1.jpg',
-            'Noorset4/c2_p4_2.jpg',
-            'Noorset4/c2_p4_3.jpg',
-            'Noorset4/c2_p4_4.jpg'
+            'Noorset4/c2_p4_1.JPG',
+            'Noorset4/c2_p4_2.JPG',
+            'Noorset4/c2_p4_3.JPG',
+            'Noorset4/c2_p4_4.JPG'
         ]
     }
 ];
-
 
 // =============================================================================
 // 🛠️ SECTION 5: SERVICES DATA
@@ -184,12 +183,18 @@ const SHOP_DATA = [
 // App State
 let state = {
     currentPage: 'home',
-    cart: [],
+    // 💾 LOCAL STORAGE LOGIC: Load saved cart or empty array
+    cart: JSON.parse(localStorage.getItem('ronish_cart')) || [],
     mobileMenuOpen: false,
     selectedService: null,
     activeCategory: null,    
     activeProduct: null
 };
+
+// 💾 HELPER: Save Cart to Storage
+function saveCartToStorage() {
+    localStorage.setItem('ronish_cart', JSON.stringify(state.cart));
+}
 
 function getAllProducts() {
     let all = [];
@@ -203,49 +208,90 @@ function findProduct(id) {
     return getAllProducts().find(p => p.id === id);
 }
 
+// ---------------------------------------------------------
+// 🔄 HISTORY & NAVIGATION HANDLING (NEW)
+// ---------------------------------------------------------
+
 function init() {
+    // 1. Set initial state in history so we can come back to "Home"
+    const initialState = { 
+        page: 'home', 
+        cat: null, 
+        prod: null 
+    };
+    history.replaceState(initialState, '', '');
+
+    // 2. Listen for the "Back" button (popstate event)
+    window.addEventListener('popstate', (event) => {
+        if (event.state) {
+            // Restore the state from the history event
+            state.currentPage = event.state.page;
+            state.activeCategory = event.state.cat;
+            state.activeProduct = event.state.prod;
+            state.mobileMenuOpen = false;
+            window.scrollTo(0, 0); // Optional: Scroll top on back
+            render();
+        }
+    });
+
     render();
 }
 
-function navigate(page) {
+// Central Function to Switch Pages and Save History
+function updateAppState(page, category = null, product = null) {
+    // 1. Update State
     state.currentPage = page;
-    state.mobileMenuOpen = false;
-    if (page === 'shop') {
-        state.activeCategory = null;
-        state.activeProduct = null;
-    }
+    state.activeCategory = category;
+    state.activeProduct = product;
+    state.mobileMenuOpen = false; // Always close menu
+
+    // 2. Push to Browser History
+    const historyState = { 
+        page: page, 
+        cat: category, 
+        prod: product 
+    };
+    history.pushState(historyState, '', '');
+
+    // 3. Scroll and Render
     window.scrollTo(0, 0);
     render();
+}
+
+// WRAPPERS FOR CLICK EVENTS
+function navigate(page) {
+    // If navigating to shop from menu, reset categories
+    if (page === 'shop') {
+        updateAppState('shop', null, null);
+    } else {
+        updateAppState(page, null, null);
+    }
 }
 
 function openCategory(catId) {
-    state.activeCategory = catId;
-    state.activeProduct = null;
-    window.scrollTo(0, 0);
-    render();
+    updateAppState('shop', catId, null);
 }
 
 function openProduct(prodId) {
-    state.activeProduct = prodId;
-    window.scrollTo(0, 0);
-    render();
+    updateAppState('shop', state.activeCategory, prodId);
 }
 
 function backToCategories() {
-    state.activeCategory = null;
-    state.activeProduct = null;
-    render();
+    updateAppState('shop', null, null);
 }
 
 function backToProductList() {
-    state.activeProduct = null;
-    render();
+    updateAppState('shop', state.activeCategory, null);
 }
 
 function toggleMobileMenu() {
     state.mobileMenuOpen = !state.mobileMenuOpen;
     render(); 
 }
+
+// ---------------------------------------------------------
+// 🛒 CART LOGIC
+// ---------------------------------------------------------
 
 function addToCart(productId) {
     const product = findProduct(productId);
@@ -259,6 +305,8 @@ function addToCart(productId) {
         state.cart.push({ ...product, quantity: 1 });
     }
 
+    // 💾 SAVE
+    saveCartToStorage();
     showNotification(`Added ${product.name} to cart`);
     render(); 
 }
@@ -270,6 +318,8 @@ function updateQuantity(productId, change) {
         if (item.quantity <= 0) {
             removeFromCart(productId);
         } else {
+            // 💾 SAVE
+            saveCartToStorage();
             render();
         }
     }
@@ -277,6 +327,8 @@ function updateQuantity(productId, change) {
 
 function removeFromCart(productId) {
     state.cart = state.cart.filter(item => item.id !== productId);
+    // 💾 SAVE
+    saveCartToStorage();
     render();
 }
 
@@ -473,6 +525,7 @@ function getShopHTML() {
                 <!-- Gallery -->
                 <div class="md:w-2/3 p-4 md:p-6 bg-gray-50">
                     <h3 class="text-lg font-bold text-dark mb-4">Gallery</h3>
+                    <!-- Changed grid to 2 cols on mobile for better visibility -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                         ${product.gallery.map(img => `
                         <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:scale-[1.02] transition duration-300">
@@ -603,7 +656,7 @@ function getCheckoutHTML() {
                     <select name="payment_method" class="text-base w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-beige">
                         <option value="UPI">UPI (Google Pay / PhonePe / Paytm)</option>
                         <option value="BankTransfer">Bank Transfer (IMPS / NEFT)</option>
-                        <option value="CashOnDelivery">Cash on Delivery (COD)</option>
+                        <!-- Cash on Delivery removed -->
                     </select>
                 </div>
                 <input type="hidden" name="_subject" value="New PRODUCT ORDER from Ronish Website">
@@ -759,14 +812,57 @@ function handleOrderSubmit() {
         alert("Please open script.js and go to line 14 to put your actual email address!");
         return;
     }
-    let orderString = state.cart.map(item => {
+
+    // 1. Prepare Data
+    const formData = new FormData(form);
+    const customerName = formData.get('fullname');
+    const customerPhone = formData.get('phone');
+    const address = formData.get('address');
+    const city = formData.get('city');
+    const paymentMethod = formData.get('payment_method');
+
+    // Cart Details
+    let orderList = state.cart.map(item => {
+        return `${item.quantity}x ${item.name} (₹${(item.price * item.quantity).toFixed(2)})`;
+    }).join("\n");
+    
+    const totalAmount = "₹" + getCartTotal().toFixed(2);
+
+    // 2. WhatsApp Integration
+    const waMessage = `*Hi Ronish, New Order Request!* 💅\n\n` +
+        `*Name:* ${customerName}\n` +
+        `*Phone:* ${customerPhone}\n` +
+        `*Address:* ${address}, ${city}\n` +
+        `*Payment Mode:* ${paymentMethod}\n\n` +
+        `*Order Details:*\n${orderList}\n\n` +
+        `*Total Amount:* ${totalAmount}\n\n` +
+        `Please confirm availability and share payment details.`;
+
+    const waURL = `https://wa.me/${CONFIG.whatsapp.replace('+', '')}?text=${encodeURIComponent(waMessage)}`;
+    
+    // Open WhatsApp
+    window.open(waURL, '_blank');
+
+    // 3. Email Backup (Standard Form Submit)
+    let emailOrderString = state.cart.map(item => {
         return `${item.quantity}x ${item.name} (₹${(item.price * item.quantity).toFixed(2)})`;
     }).join(" | \n");
-    document.getElementById('order_details_input').value = orderString;
-    document.getElementById('order_total_input').value = "₹" + getCartTotal().toFixed(2);
+
+    document.getElementById('order_details_input').value = emailOrderString;
+    document.getElementById('order_total_input').value = totalAmount;
+    
+    // Clear Cart
+    localStorage.removeItem('ronish_cart');
+    state.cart = []; 
+    
+    // Submit Form to Email 
     form.action = `https://formsubmit.co/${CONFIG.email}`;
     form.method = "POST";
-    form.submit();
+    
+    // Small delay to ensure tab opens before redirect
+    setTimeout(() => {
+        form.submit();
+    }, 1000);
 }
 
 function render() {
