@@ -128,12 +128,12 @@ const CAT_2_PRODUCTS = [
         name: 'Noor VIP Pink Set',
         price: 250,
         description: 'Premium style.',
-        cover: 'Noorset3/c2_p3_2.jpg',
+        cover: 'Noorset3/c2_p3_2.JPG',
         gallery: [
-            'Noorset3/c2_p3_1.jpg',
-            'Noorset3/c2_p3_2.jpg',
-            'Noorset3/c2_p3_3.jpg',
-            'Noorset3/c2_p3_4.jpg'
+            'Noorset3/c2_p3_1.JPG',
+            'Noorset3/c2_p3_2.JPG',
+            'Noorset3/c2_p3_3.JPG',
+            'Noorset3/c2_p3_4.JPG'
         ]
     },
     {
