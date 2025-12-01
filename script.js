@@ -23,7 +23,7 @@ const CATEGORY_INFO = {
     },
     cat2: {
         name:  'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.jpg'  
+        image: 'Noorset1/c2_p1_2.JPG'  
     }
 };
 
@@ -128,12 +128,12 @@ const CAT_2_PRODUCTS = [
         name: 'Noor VIP Pink Set',
         price: 250,
         description: 'Premium style.',
-        cover: 'Noorset3/c2_p3_2.JPG',
+        cover: 'Noorset3/c2_p3_2.jpg',
         gallery: [
-            'Noorset3/c2_p3_1.JPG',
-            'Noorset3/c2_p3_2.JPG',
-            'Noorset3/c2_p3_3.JPG',
-            'Noorset3/c2_p3_4.JPG'
+            'Noorset3/c2_p3_1.jpg',
+            'Noorset3/c2_p3_2.jpg',
+            'Noorset3/c2_p3_3.jpg',
+            'Noorset3/c2_p3_4.jpg'
         ]
     },
     {
