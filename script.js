@@ -6,8 +6,12 @@ const CONFIG = {
     instagram: 'https://www.instagram.com/ronishchhabraartistry?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     whatsapp: '+919592150870', 
     
+    // 📢 ANNOUNCEMENT BAR (Set to false to hide)
+    showAnnouncement: true, 
+    announcementText: "✨ Free Shipping on orders above ₹2000 | DM for Customizations ✨",
+
     // Website Images
-    logo:              'images/logo.jpg',
+    logo:              'images/logo.jpg', 
     heroBanner:        'images/banner.jpg', 
     collectionFeature: 'images/collection-feature.jpg',
     bookingFeature:    'images/booking-feature.jpg'
@@ -23,7 +27,7 @@ const CATEGORY_INFO = {
     },
     cat2: {
         name:  'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.JPG'  
+        image: 'Noorset1/c2_p1_2.jpg'  
     }
 };
 
@@ -161,7 +165,7 @@ const SERVICES = [
 ];
 
 // =============================================================================
-// ⚙️ SYSTEM LOGIC (DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW JS)
+// ⚙️ SYSTEM LOGIC
 // =============================================================================
 
 // Combine Data for Internal Use
@@ -209,27 +213,20 @@ function findProduct(id) {
 }
 
 // ---------------------------------------------------------
-// 🔄 HISTORY & NAVIGATION HANDLING (NEW)
+// 🔄 HISTORY & NAVIGATION HANDLING
 // ---------------------------------------------------------
 
 function init() {
-    // 1. Set initial state in history so we can come back to "Home"
-    const initialState = { 
-        page: 'home', 
-        cat: null, 
-        prod: null 
-    };
+    const initialState = { page: 'home', cat: null, prod: null };
     history.replaceState(initialState, '', '');
 
-    // 2. Listen for the "Back" button (popstate event)
     window.addEventListener('popstate', (event) => {
         if (event.state) {
-            // Restore the state from the history event
             state.currentPage = event.state.page;
             state.activeCategory = event.state.cat;
             state.activeProduct = event.state.prod;
             state.mobileMenuOpen = false;
-            window.scrollTo(0, 0); // Optional: Scroll top on back
+            window.scrollTo(0, 0);
             render();
         }
     });
@@ -237,30 +234,21 @@ function init() {
     render();
 }
 
-// Central Function to Switch Pages and Save History
 function updateAppState(page, category = null, product = null) {
-    // 1. Update State
     state.currentPage = page;
     state.activeCategory = category;
     state.activeProduct = product;
-    state.mobileMenuOpen = false; // Always close menu
+    state.mobileMenuOpen = false;
 
-    // 2. Push to Browser History
-    const historyState = { 
-        page: page, 
-        cat: category, 
-        prod: product 
-    };
+    const historyState = { page: page, cat: category, prod: product };
     history.pushState(historyState, '', '');
 
-    // 3. Scroll and Render
     window.scrollTo(0, 0);
     render();
 }
 
 // WRAPPERS FOR CLICK EVENTS
 function navigate(page) {
-    // If navigating to shop from menu, reset categories
     if (page === 'shop') {
         updateAppState('shop', null, null);
     } else {
@@ -290,44 +278,54 @@ function toggleMobileMenu() {
 }
 
 // ---------------------------------------------------------
-// 🛒 CART LOGIC
+// 🛒 CART LOGIC (UPDATED FOR SIZES)
 // ---------------------------------------------------------
 
 function addToCart(productId) {
     const product = findProduct(productId);
     if (!product) return;
 
-    const existingItem = state.cart.find(item => item.id === productId);
+    // 1. Get Selected Size
+    const sizeSelect = document.getElementById('product-size-select');
+    const selectedSize = sizeSelect ? sizeSelect.value : 'Custom';
+
+    // 2. Create Unique Cart ID (Product ID + Size)
+    const cartItemId = `${productId}-${selectedSize}`;
+
+    const existingItem = state.cart.find(item => item.cartId === cartItemId);
 
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        state.cart.push({ ...product, quantity: 1 });
+        state.cart.push({ 
+            ...product, 
+            cartId: cartItemId, // New Unique Key
+            size: selectedSize, // Save Size
+            quantity: 1 
+        });
     }
 
     // 💾 SAVE
     saveCartToStorage();
-    showNotification(`Added ${product.name} to cart`);
+    showNotification(`Added ${product.name} (${selectedSize}) to cart`);
     render(); 
 }
 
-function updateQuantity(productId, change) {
-    const item = state.cart.find(i => i.id === productId);
+function updateQuantity(cartItemId, change) {
+    const item = state.cart.find(i => i.cartId === cartItemId);
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(productId);
+            removeFromCart(cartItemId);
         } else {
-            // 💾 SAVE
             saveCartToStorage();
             render();
         }
     }
 }
 
-function removeFromCart(productId) {
-    state.cart = state.cart.filter(item => item.id !== productId);
-    // 💾 SAVE
+function removeFromCart(cartItemId) {
+    state.cart = state.cart.filter(item => item.cartId !== cartItemId);
     saveCartToStorage();
     render();
 }
@@ -367,11 +365,19 @@ function showNotification(msg, type = 'success') {
 
 function getHeaderHTML() {
     const count = getCartCount();
+    
+    const announcementHTML = CONFIG.showAnnouncement ? `
+    <div class="bg-dark text-beige text-xs font-medium text-center py-2 px-4 tracking-wide">
+        ${CONFIG.announcementText}
+    </div>` : '';
+
     return `
+    ${announcementHTML}
     <header class="sticky top-0 z-50 bg-white/95 shadow-md backdrop-blur-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <div class="flex items-center cursor-pointer" onclick="navigate('home')">
-                <img src="${CONFIG.logo}" alt="Logo" class="h-10 w-10 md:h-12 md:w-12 mr-3 rounded-xl object-contain shadow-md bg-white" />
+                <img src="${CONFIG.logo}" alt="Logo" class="h-10 w-10 md:h-12 md:w-12 mr-3 rounded-xl object-contain shadow-md bg-white" 
+                     onerror="this.src='https://placehold.co/100x100?text=R'" />
                 <div class="flex flex-col leading-none">
                     <h1 class="text-xl md:text-2xl font-extrabold italic text-gray-900 font-serif">RONISH</h1>
                     <p class="text-[8px] md:text-[10px] tracking-widest uppercase font-medium text-gray-600">Chhabra Artistry</p>
@@ -407,7 +413,9 @@ function getHeroHTML() {
     return `
     <section class="relative min-h-[65vh] md:min-h-screen flex items-center justify-center py-20 text-center text-white overflow-hidden fade-in bg-gray-900">
         <div class="absolute inset-0 bg-black">
-            <img src="${CONFIG.heroBanner}" alt="Elegant Nail Art" class="w-full h-full object-cover object-center opacity-50" />
+            <img src="${CONFIG.heroBanner}" alt="Elegant Nail Art" 
+                 class="w-full h-full object-cover object-center opacity-50" 
+                 onerror="this.style.opacity='0.3'" />
         </div>
         <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
             <p class="text-lg md:text-xl font-medium mb-4 text-beige tracking-wide">The Art of Luxury, Customized for You.</p>
@@ -433,7 +441,8 @@ function getHeroHTML() {
         <div class="grid md:grid-cols-2 gap-8 md:gap-12">
             <div class="bg-white rounded-xl shadow-xl overflow-hidden group">
                 <div class="h-56 md:h-64 overflow-hidden">
-                    <img src="${CONFIG.collectionFeature}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="${CONFIG.collectionFeature}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" 
+                         onerror="this.src='https://placehold.co/600x400?text=Collection'">
                 </div>
                 <div class="p-6 md:p-8">
                     <h4 class="text-2xl md:text-3xl font-bold text-dark mb-3 font-serif">The RONISH Collection</h4>
@@ -443,7 +452,8 @@ function getHeroHTML() {
             </div>
              <div class="bg-white rounded-xl shadow-xl overflow-hidden group">
                 <div class="h-56 md:h-64 overflow-hidden">
-                    <img src="${CONFIG.bookingFeature}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="${CONFIG.bookingFeature}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                         onerror="this.src='https://placehold.co/600x400?text=Booking'">
                 </div>
                 <div class="p-6 md:p-8">
                     <h4 class="text-2xl md:text-3xl font-bold text-dark mb-3 font-serif">Book Artistry Session</h4>
@@ -467,7 +477,8 @@ function getShopHTML() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 ${SHOP_DATA.map(cat => `
                 <div onclick="openCategory('${cat.id}')" class="relative h-64 md:h-80 rounded-xl overflow-hidden cursor-pointer group shadow-lg">
-                    <img src="${cat.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="${cat.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                         onerror="this.src='https://placehold.co/600x400?text=${cat.name}'">
                     <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <h3 class="text-2xl md:text-3xl font-bold font-serif">${cat.name}</h3>
@@ -496,7 +507,8 @@ function getShopHTML() {
                 ${mainCat.products.map(prod => `
                 <div onclick="openProduct('${prod.id}')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer group flex flex-col">
                     <div class="h-56 md:h-64 overflow-hidden bg-gray-200">
-                        <img src="${prod.cover}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="${prod.cover}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                             onerror="this.src='https://placehold.co/400x400?text=Product'">
                     </div>
                     <div class="p-6 text-center flex-grow flex flex-col justify-between">
                         <div>
@@ -514,6 +526,7 @@ function getShopHTML() {
 
     const product = mainCat.products.find(p => p.id === state.activeProduct);
 
+    // LEVEL 3: Product Detail with Size Selector
     return `
     <div class="max-w-7xl mx-auto px-4 py-12 bg-light min-h-screen slide-up">
         <button onclick="backToProductList()" class="mb-6 flex items-center text-gray-600 hover:text-dark">
@@ -525,11 +538,12 @@ function getShopHTML() {
                 <!-- Gallery -->
                 <div class="md:w-2/3 p-4 md:p-6 bg-gray-50">
                     <h3 class="text-lg font-bold text-dark mb-4">Gallery</h3>
-                    <!-- Changed grid to 2 cols on mobile for better visibility -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                         ${product.gallery.map(img => `
                         <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:scale-[1.02] transition duration-300">
-                            <img src="${img}" class="w-full h-full object-cover cursor-pointer" onclick="window.open('${img}', '_blank')">
+                            <img src="${img}" class="w-full h-full object-cover cursor-pointer" 
+                                 onclick="window.open('${img}', '_blank')"
+                                 onerror="this.style.opacity='0.2'">
                         </div>
                         `).join('')}
                     </div>
@@ -541,8 +555,20 @@ function getShopHTML() {
                     <h2 class="text-3xl md:text-4xl font-bold text-dark font-serif mb-4">${product.name}</h2>
                     <p class="text-gray-600 mb-8 leading-relaxed">${product.description}</p>
                     
-                    <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center justify-between mb-4">
                         <span class="text-3xl font-bold text-dark">₹${product.price}</span>
+                    </div>
+
+                    <!-- SIZE SELECTOR -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold text-dark mb-2">Select Size:</label>
+                        <select id="product-size-select" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-beige bg-white">
+                            <option value="XS">XS (14, 10, 11, 10, 7mm)</option>
+                            <option value="S">S (15, 11, 12, 11, 8mm)</option>
+                            <option value="M">M (16, 12, 13, 12, 9mm)</option>
+                            <option value="L">L (18, 13, 14, 13, 10mm)</option>
+                            <option value="Custom">Custom / I Don't Know</option>
+                        </select>
                     </div>
 
                     <button onclick="addToCart('${product.id}')" class="w-full py-4 bg-dark text-white font-bold rounded-xl hover:bg-black hover:scale-[1.02] transition-all shadow-lg flex justify-center items-center text-lg">
@@ -583,7 +609,7 @@ function getCartHTML() {
                 ${state.cart.map(item => `
                 <div class="flex bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                     <div class="h-24 w-24 md:h-28 md:w-28 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200">
-                        <img src="${item.cover}" class="h-full w-full object-cover">
+                        <img src="${item.cover}" class="h-full w-full object-cover" onerror="this.src='https://placehold.co/200x200?text=NA'">
                     </div>
                     <div class="ml-4 md:ml-6 flex flex-1 flex-col justify-between">
                         <div>
@@ -591,15 +617,17 @@ function getCartHTML() {
                                 <h3>${item.name}</h3>
                                 <p>₹${(item.price * item.quantity).toFixed(2)}</p>
                             </div>
+                            <!-- SHOW SIZE IN CART -->
+                            <p class="mt-1 text-sm text-beige font-medium">Size: ${item.size}</p>
                         </div>
                         <div class="flex items-center justify-between mt-4">
                             <div class="flex items-center border border-gray-200 rounded-lg">
-                                <!-- FIXED QUOTES FOR STRING IDs HERE -->
-                                <button onclick="updateQuantity('${item.id}', -1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="minus" class="h-4 w-4"></i></button>
+                                <!-- UPDATED: Using item.cartId for updates -->
+                                <button onclick="updateQuantity('${item.cartId}', -1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="minus" class="h-4 w-4"></i></button>
                                 <span class="px-4 font-medium text-dark">${item.quantity}</span>
-                                <button onclick="updateQuantity('${item.id}', 1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="plus" class="h-4 w-4"></i></button>
+                                <button onclick="updateQuantity('${item.cartId}', 1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="plus" class="h-4 w-4"></i></button>
                             </div>
-                            <button onclick="removeFromCart('${item.id}')" class="text-sm font-medium text-red-400 hover:text-red-600 flex items-center">
+                            <button onclick="removeFromCart('${item.cartId}')" class="text-sm font-medium text-red-400 hover:text-red-600 flex items-center">
                                 <i data-lucide="trash-2" class="h-4 w-4 mr-1"></i> Remove
                             </button>
                         </div>
@@ -634,6 +662,7 @@ function getCheckoutHTML() {
             <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();" class="space-y-6">
                 <input type="hidden" name="Order_Details" id="order_details_input">
                 <input type="hidden" name="Total_Price" id="order_total_input">
+                
                 <div>
                     <h3 class="text-lg font-bold text-dark mb-4 flex items-center"><i data-lucide="map-pin" class="h-5 w-5 mr-2 text-beige"></i> Shipping Address</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -656,7 +685,6 @@ function getCheckoutHTML() {
                     <select name="payment_method" class="text-base w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-beige">
                         <option value="UPI">UPI (Google Pay / PhonePe / Paytm)</option>
                         <option value="BankTransfer">Bank Transfer (IMPS / NEFT)</option>
-                        <!-- Cash on Delivery removed -->
                     </select>
                 </div>
                 <input type="hidden" name="_subject" value="New PRODUCT ORDER from Ronish Website">
@@ -732,6 +760,12 @@ function getSuccessHTML() {
 
 function getFooterHTML() {
     return `
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/${CONFIG.whatsapp.replace('+', '')}" target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+        <i data-lucide="message-circle" class="h-8 w-8"></i>
+    </a>
+
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="flex items-center justify-center mb-6">
@@ -761,7 +795,7 @@ function getFooterHTML() {
                     <span class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Email</span>
                 </a>
             </div>
-            <p class="text-sm text-gray-500 border-t border-gray-800 pt-8">&copy; 2025 RONISH Chhabra Artistry. All rights reserved.</p>
+            <p class="text-sm text-gray-500 border-t border-gray-800 pt-8">&copy; 2025 RONISH Chhabra Artistry. All rights reserved. | OG | v1.0</p>
         </div>
     </footer>
     `;
@@ -823,7 +857,7 @@ function handleOrderSubmit() {
 
     // Cart Details
     let orderList = state.cart.map(item => {
-        return `${item.quantity}x ${item.name} (₹${(item.price * item.quantity).toFixed(2)})`;
+        return `${item.quantity}x ${item.name} [Size: ${item.size}] (₹${(item.price * item.quantity).toFixed(2)})`;
     }).join("\n");
     
     const totalAmount = "₹" + getCartTotal().toFixed(2);
@@ -843,9 +877,9 @@ function handleOrderSubmit() {
     // Open WhatsApp
     window.open(waURL, '_blank');
 
-    // 3. Email Backup (Standard Form Submit)
+    // 3. Email Backup
     let emailOrderString = state.cart.map(item => {
-        return `${item.quantity}x ${item.name} (₹${(item.price * item.quantity).toFixed(2)})`;
+        return `${item.quantity}x ${item.name} - Size: ${item.size} (₹${(item.price * item.quantity).toFixed(2)})`;
     }).join(" | \n");
 
     document.getElementById('order_details_input').value = emailOrderString;
