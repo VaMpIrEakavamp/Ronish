@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Ronish Chhabra Artistry - Exclusive press-on nails and bespoke artistry sessions.">
+    <title>RONISH | Chhabra Artistry</title>
+    
+    <!-- FAVICON (Browser Tab Icon) -->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind Theme Configuration jsut to know hehe -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: '#EBC688', // Brand Gold
+                        dark: '#2c2c2c',  // Brand Dark Gray
+                        light: '#f9f9f9', // Background Light Gray
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light font-sans text-dark antialiased">
+
+    <!-- The Application Container -->
+    <div id="app"></div>
+
+    <!-- Notification Toast Container -->
+    <div id="notification-container" class="fixed bottom-6 right-6 z-50 hidden transition-all duration-300"></div>
+
+    <!-- JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+</html>

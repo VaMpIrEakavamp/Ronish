@@ -1,0 +1,67 @@
+/* Base settings */
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* Removes blue highlight on mobile tap */
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+.slide-in {
+    animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateX(20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #EBC688; /* Beige */
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4b279;
+}
+
+/* Prevent text selection on UI elements for app-like feel */
+button, .cursor-pointer {
+    user-select: none;
+}
