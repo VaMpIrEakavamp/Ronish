@@ -1,47 +1,47 @@
 // =============================================================================
-// 📸 SECTION 1: GENERAL CONFIGURATION
+// SECTION 1: GENERAL CONFIGURATION
 // =============================================================================
 const CONFIG = {
     email: 'ronishchhabraartistry@gmail.com',
     instagram: 'https://www.instagram.com/ronishchhabraartistry?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
-    whatsapp: '+919592150870', 
-    
-    // 📢 ANNOUNCEMENT BAR (Set to false to hide)
-    showAnnouncement: true, 
+    whatsapp: '+919592150870',
+
+    // ANNOUNCEMENT BAR 
+    showAnnouncement: true,
     announcementText: "✨ Free Shipping on orders above ₹2000 | DM for Customizations ✨",
 
     // Website Images
-    logo:              'images/logo.jpg', 
-    heroBanner:        'images/banner.jpg', 
+    logo: 'images/logofavicon.jpg',
+    heroBanner: 'images/banner.jpg',
     collectionFeature: 'images/collection-feature.jpg',
-    bookingFeature:    'images/booking-feature.jpg'
+    bookingFeature: 'images/booking-feature.jpg'
 };
 
 // =============================================================================
-// 💅 SECTION 2: MAIN CATEGORIES SETUP
+// SECTION 2: MAIN CATEGORIES SETUP
 // =============================================================================
 const CATEGORY_INFO = {
     cat1: {
-        name:  'KUDMAYI- An exclusive bridal collection',
-        image: 'Mainset1/main1.jpg'  
+        name: 'KUDMAYI- An exclusive bridal collection',
+        image: 'Mainset1/main1.jpg'
     },
     cat2: {
-        name:  'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.jpg'  
+        name: 'NOOR - For the glow that never fades.',
+        image: 'Noorset1/c2_p1_2.jpg'
     }
 };
 
 // =============================================================================
-// 📦 SECTION 3: PRODUCTS FOR CATEGORY 1
+// SECTION 3: PRODUCTS FOR CATEGORY 1
 // =============================================================================
 const CAT_1_PRODUCTS = [
     {
         id: 'c1_p1',
-        name: 'Customised set 1 -',
-        price: 250,
-        description: 'bow, flower, initials, infinite',
-        cover: 'Mainset1/c1_p1_1.jpg', 
-        gallery: [                        
+        name: 'NOORRANI',
+        price: 2799,
+        description: 'It includes - rings, bow, flowers, initials, infinite',
+        cover: 'Mainset1/c1_p1_1.jpg',
+        gallery: [
             'Mainset1/c1_p1_1.jpg',
             'Mainset1/c1_p1_2.jpg',
             'Mainset1/c1_p1_3.jpg',
@@ -52,8 +52,8 @@ const CAT_1_PRODUCTS = [
     },
     {
         id: 'c1_p2',
-        name: 'Customised set 2 -',
-        price: 250,
+        name: 'SHAHI MILAN -',
+        price: 2999,
         description: 'name initials, sehra, kallre, chuda, doli, ghatbandhan',
         cover: 'Mainset2/c1_p2_1.JPG',
         gallery: [
@@ -67,8 +67,8 @@ const CAT_1_PRODUCTS = [
     },
     {
         id: 'c1_p3',
-        name: 'Sehra & kallere 1 - ',
-        price: 250,
+        name: 'SHAHI BANDHAN- ',
+        price: 2499,
         description: 'Sparkling glitter accents.',
         cover: 'Mainset3/c1_p3_1.JPG',
         gallery: [
@@ -81,8 +81,8 @@ const CAT_1_PRODUCTS = [
     },
     {
         id: 'c1_p4',
-        name: 'sehra & kallere 2 -',
-        price: 250,
+        name: 'RAJ BANDHAN-',
+        price: 2499,
         description: ' mehroon edition.',
         cover: 'Mainset4/c1_p4_1.JPG',
         gallery: [
@@ -95,7 +95,7 @@ const CAT_1_PRODUCTS = [
 ];
 
 // =============================================================================
-// 📦 SECTION 4: PRODUCTS FOR CATEGORY 2
+// SECTION 4: PRODUCTS FOR CATEGORY 2
 // =============================================================================
 const CAT_2_PRODUCTS = [
     {
@@ -129,8 +129,8 @@ const CAT_2_PRODUCTS = [
     },
     {
         id: 'c2_p3',
-        name: 'Noor VIP Pink Set',
-        price: 250,
+        name: 'MEHRAJ',
+        price: 1999,
         description: 'Premium style.',
         cover: 'Noorset3/c2_p3_2.jpg',
         gallery: [
@@ -142,8 +142,8 @@ const CAT_2_PRODUCTS = [
     },
     {
         id: 'c2_p4',
-        name: 'Noor VIP Red Set',
-        price: 250,
+        name: 'SHAHIANA',
+        price: 1499,
         description: 'Modern abstract hand-painted art.',
         cover: 'Noorset4/c2_p4_1.JPG',
         gallery: [
@@ -156,7 +156,7 @@ const CAT_2_PRODUCTS = [
 ];
 
 // =============================================================================
-// 🛠️ SECTION 5: SERVICES DATA
+// SECTION 5: SERVICES DATA
 // =============================================================================
 const SERVICES = [
     { id: 'consult', name: 'Design Consultation', duration: '30 min', price: 250 },
@@ -165,7 +165,7 @@ const SERVICES = [
 ];
 
 // =============================================================================
-// ⚙️ SYSTEM LOGIC
+// SYSTEM LOGIC
 // =============================================================================
 
 // Combine Data for Internal Use
@@ -187,15 +187,17 @@ const SHOP_DATA = [
 // App State
 let state = {
     currentPage: 'home',
-    // 💾 LOCAL STORAGE LOGIC: Load saved cart or empty array
+    // LOCAL STORAGE LOGIC
     cart: JSON.parse(localStorage.getItem('ronish_cart')) || [],
     mobileMenuOpen: false,
     selectedService: null,
-    activeCategory: null,    
-    activeProduct: null
+    activeCategory: null,
+    activeProduct: null,
+    lightboxImage: null, 
+    policyOpen: false    
 };
 
-// 💾 HELPER: Save Cart to Storage
+// HELPER: Save Cart to Storage
 function saveCartToStorage() {
     localStorage.setItem('ronish_cart', JSON.stringify(state.cart));
 }
@@ -213,10 +215,18 @@ function findProduct(id) {
 }
 
 // ---------------------------------------------------------
-// 🔄 HISTORY & NAVIGATION HANDLING
+// HISTORY & NAVIGATION HANDLING
 // ---------------------------------------------------------
 
 function init() {
+    // 1. Load Cart Logic
+    const savedCart = JSON.parse(localStorage.getItem('ronish_cart'));
+    if (savedCart && Array.isArray(savedCart)) {
+        state.cart = savedCart.filter(item => item.cartId && item.size);
+        saveCartToStorage();
+    }
+
+    // 2. Setup History
     const initialState = { page: 'home', cat: null, prod: null };
     history.replaceState(initialState, '', '');
 
@@ -226,6 +236,8 @@ function init() {
             state.activeCategory = event.state.cat;
             state.activeProduct = event.state.prod;
             state.mobileMenuOpen = false;
+            state.lightboxImage = null; 
+            state.policyOpen = false;
             window.scrollTo(0, 0);
             render();
         }
@@ -239,6 +251,8 @@ function updateAppState(page, category = null, product = null) {
     state.activeCategory = category;
     state.activeProduct = product;
     state.mobileMenuOpen = false;
+    state.lightboxImage = null;
+    state.policyOpen = false;
 
     const historyState = { page: page, cat: category, prod: product };
     history.pushState(historyState, '', '');
@@ -274,11 +288,23 @@ function backToProductList() {
 
 function toggleMobileMenu() {
     state.mobileMenuOpen = !state.mobileMenuOpen;
-    render(); 
+    render();
+}
+
+// NEW: Lightbox Handler
+function toggleLightbox(imageSrc) {
+    state.lightboxImage = imageSrc ? imageSrc : null;
+    render();
+}
+
+// NEW: Policy Modal Handler
+function togglePolicy() {
+    state.policyOpen = !state.policyOpen;
+    render();
 }
 
 // ---------------------------------------------------------
-// 🛒 CART LOGIC (UPDATED FOR SIZES)
+// CART LOGIC
 // ---------------------------------------------------------
 
 function addToCart(productId) {
@@ -287,9 +313,14 @@ function addToCart(productId) {
 
     // 1. Get Selected Size
     const sizeSelect = document.getElementById('product-size-select');
-    const selectedSize = sizeSelect ? sizeSelect.value : 'Custom';
+    // Ensure size is selected (value must not be empty)
+    if (!sizeSelect || sizeSelect.value === "") {
+        alert("Please select a nail size before adding to cart.");
+        return;
+    }
+    const selectedSize = sizeSelect.value;
 
-    // 2. Create Unique Cart ID (Product ID + Size)
+    // 2. Create Unique Cart ID
     const cartItemId = `${productId}-${selectedSize}`;
 
     const existingItem = state.cart.find(item => item.cartId === cartItemId);
@@ -297,18 +328,17 @@ function addToCart(productId) {
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        state.cart.push({ 
-            ...product, 
-            cartId: cartItemId, // New Unique Key
-            size: selectedSize, // Save Size
-            quantity: 1 
+        state.cart.push({
+            ...product,
+            cartId: cartItemId,
+            size: selectedSize,
+            quantity: 1
         });
     }
 
-    // 💾 SAVE
     saveCartToStorage();
-    showNotification(`Added ${product.name} (${selectedSize}) to cart`);
-    render(); 
+    showNotification(`Added ${product.name} (${selectedSize})`);
+    render();
 }
 
 function updateQuantity(cartItemId, change) {
@@ -340,11 +370,11 @@ function getCartCount() {
 
 function showNotification(msg, type = 'success') {
     const container = document.getElementById('notification-container');
-    if (!container) return; 
-    
+    if (!container) return;
+
     const colorClass = type === 'error' ? 'border-red-500' : 'border-beige';
     const icon = type === 'error' ? 'x-circle' : 'check';
-    
+
     container.innerHTML = `
         <div class="bg-dark text-white px-6 py-4 rounded-lg shadow-2xl flex items-center border-l-4 ${colorClass} slide-up">
             <i data-lucide="${icon}" class="h-5 w-5 mr-3 text-beige"></i>
@@ -353,7 +383,7 @@ function showNotification(msg, type = 'success') {
     `;
     lucide.createIcons();
     container.classList.remove('hidden');
-    
+
     setTimeout(() => {
         container.classList.add('hidden');
     }, 3000);
@@ -362,6 +392,45 @@ function showNotification(msg, type = 'success') {
 // ==========================================
 // HTML GENERATORS
 // ==========================================
+
+function getLightboxHTML() {
+    if (!state.lightboxImage) return '';
+    return `
+    <div class="fixed inset-0 z-[100] bg-black bg-opacity-95 flex items-center justify-center p-4 fade-in" onclick="toggleLightbox(null)">
+        <button class="absolute top-5 right-5 text-white hover:text-beige transition-colors p-2 z-[101]">
+            <i data-lucide="x" class="h-10 w-10"></i>
+        </button>
+        <img src="${state.lightboxImage}" class="max-w-full max-h-[85vh] rounded shadow-2xl object-contain scale-up" onclick="event.stopPropagation()" />
+    </div>
+    `;
+}
+
+function getPolicyModalHTML() {
+    if (!state.policyOpen) return '';
+    return `
+    <div class="fixed inset-0 z-[110] bg-black bg-opacity-50 flex items-center justify-center p-4 fade-in" onclick="togglePolicy()">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full shadow-2xl relative" onclick="event.stopPropagation()">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-dark" onclick="togglePolicy()">
+                <i data-lucide="x" class="h-6 w-6"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-dark mb-4 font-serif">Shipping & Returns</h3>
+            <div class="space-y-4 text-gray-600 text-sm leading-relaxed">
+                <p><strong>Shipping:</strong></p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Standard shipping takes 5-7 business days across India.</li>
+                    <li>Express shipping options available upon request via WhatsApp.</li>
+                </ul>
+                <p><strong>Returns & Exchanges:</strong></p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Due to the custom nature of our press-on nails, <strong>we do not accept returns or exchanges</strong> unless the item arrives damaged.</li>
+                    <li>Please ensure you measure your nails correctly using our guide before ordering.</li>
+                </ul>
+                <p class="text-xs text-gray-400 mt-4">For any issues, please contact us on WhatsApp within 24 hours of delivery.</p>
+            </div>
+        </div>
+    </div>
+    `;
+}
 
 function getHeaderHTML() {
     const count = getCartCount();
@@ -425,14 +494,6 @@ function getHeroHTML() {
             <p class="text-base md:text-xl mb-10 max-w-2xl mx-auto text-gray-200 font-light">
                 Exclusive press-on designs and bespoke artistry sessions curated by Chhabra Artistry.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
-                <button onclick="navigate('shop')" class="w-full sm:w-auto px-8 py-4 text-lg font-bold rounded-full bg-beige text-dark hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg">
-                    SHOP DESIGNED NAILS
-                </button>
-                <button onclick="navigate('booking')" class="w-full sm:w-auto px-8 py-4 text-lg font-bold rounded-full border-2 border-beige text-beige hover:bg-beige hover:text-dark transition-all duration-300">
-                    BOOK APPOINTMENT
-                </button>
-            </div>
         </div>
     </section>
     
@@ -526,7 +587,6 @@ function getShopHTML() {
 
     const product = mainCat.products.find(p => p.id === state.activeProduct);
 
-    // LEVEL 3: Product Detail with Size Selector
     return `
     <div class="max-w-7xl mx-auto px-4 py-12 bg-light min-h-screen slide-up">
         <button onclick="backToProductList()" class="mb-6 flex items-center text-gray-600 hover:text-dark">
@@ -541,8 +601,9 @@ function getShopHTML() {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                         ${product.gallery.map(img => `
                         <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:scale-[1.02] transition duration-300">
+                            <!-- UPDATED: Added toggleLightbox to gallery images -->
                             <img src="${img}" class="w-full h-full object-cover cursor-pointer" 
-                                 onclick="window.open('${img}', '_blank')"
+                                 onclick="toggleLightbox('${img}')"
                                  onerror="this.style.opacity='0.2'">
                         </div>
                         `).join('')}
@@ -563,6 +624,7 @@ function getShopHTML() {
                     <div class="mb-6">
                         <label class="block text-sm font-bold text-dark mb-2">Select Size:</label>
                         <select id="product-size-select" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-beige bg-white">
+                            <option value="" disabled selected>-- Choose Your Size --</option>
                             <option value="XS">XS (14, 10, 11, 10, 7mm)</option>
                             <option value="S">S (15, 11, 12, 11, 8mm)</option>
                             <option value="M">M (16, 12, 13, 12, 9mm)</option>
@@ -622,7 +684,7 @@ function getCartHTML() {
                         </div>
                         <div class="flex items-center justify-between mt-4">
                             <div class="flex items-center border border-gray-200 rounded-lg">
-                                <!-- UPDATED: Using item.cartId for updates -->
+                                <!-- FIXED QUOTES FOR STRING IDs HERE -->
                                 <button onclick="updateQuantity('${item.cartId}', -1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="minus" class="h-4 w-4"></i></button>
                                 <span class="px-4 font-medium text-dark">${item.quantity}</span>
                                 <button onclick="updateQuantity('${item.cartId}', 1)" class="p-2 hover:bg-gray-50 text-gray-600"><i data-lucide="plus" class="h-4 w-4"></i></button>
@@ -662,7 +724,6 @@ function getCheckoutHTML() {
             <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();" class="space-y-6">
                 <input type="hidden" name="Order_Details" id="order_details_input">
                 <input type="hidden" name="Total_Price" id="order_total_input">
-                
                 <div>
                     <h3 class="text-lg font-bold text-dark mb-4 flex items-center"><i data-lucide="map-pin" class="h-5 w-5 mr-2 text-beige"></i> Shipping Address</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -689,7 +750,13 @@ function getCheckoutHTML() {
                 </div>
                 <input type="hidden" name="_subject" value="New PRODUCT ORDER from Ronish Website">
                 <input type="hidden" name="_captcha" value="false">
-                <button type="submit" id="placeOrderBtn" class="w-full py-4 bg-dark text-white font-bold rounded-lg hover:bg-black transition-colors mt-6 text-lg shadow-lg">Place Order Request (₹${getCartTotal().toFixed(2)})</button>
+
+                <!-- NEW: Terms Agreement Text -->
+                <div class="text-xs text-gray-500 text-center mt-4">
+                    By clicking below, you agree to our <button type="button" onclick="togglePolicy()" class="text-dark underline font-semibold">Shipping & Returns Policy</button>.
+                </div>
+
+                <button type="submit" id="placeOrderBtn" class="w-full py-4 bg-dark text-white font-bold rounded-lg hover:bg-black transition-colors mt-2 text-lg shadow-lg">Place Order Request (₹${getCartTotal().toFixed(2)})</button>
                 <button type="button" onclick="navigate('cart')" class="w-full mt-3 text-sm text-gray-500 hover:text-dark">&larr; Back to Cart</button>
             </form>
         </div>
@@ -795,7 +862,11 @@ function getFooterHTML() {
                     <span class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Email</span>
                 </a>
             </div>
-            <p class="text-sm text-gray-500 border-t border-gray-800 pt-8">&copy; 2025 RONISH Chhabra Artistry. All rights reserved. | OG | v1.0</p>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-center items-center text-sm text-gray-500 space-y-2 md:space-y-0 md:space-x-6">
+                <p>&copy; 2025 RONISH Chhabra Artistry. All rights reserved. | OG | v1.2</p>
+                <button onclick="togglePolicy()" class="hover:text-beige underline transition">Shipping & Returns Policy</button>
+            </div>
         </div>
     </footer>
     `;
@@ -845,6 +916,16 @@ function handleOrderSubmit() {
     if(CONFIG.email.includes("INSERT_YOUR_EMAIL")) {
         alert("Please open script.js and go to line 14 to put your actual email address!");
         return;
+    }
+
+    // NEW: Policy Notification / Confirmation Popup
+    const policyMessage = "📝 PLEASE CONFIRM POLICY:\n\n" +
+        "• Shipping: Takes 5-7 business days.\n" +
+        "• Returns: No returns/exchanges on custom items.\n\n" +
+        "Click OK to proceed with your order.";
+    
+    if (!confirm(policyMessage)) {
+        return; // Stop if user cancels
     }
 
     // 1. Prepare Data
@@ -902,6 +983,11 @@ function handleOrderSubmit() {
 function render() {
     const app = document.getElementById('app');
     let contentHTML = '';
+    
+    // Lightbox & Modal (Z-index high)
+    contentHTML += getLightboxHTML();
+    contentHTML += getPolicyModalHTML();
+    
     contentHTML += getHeaderHTML();
     contentHTML += '<main>';
     switch(state.currentPage) {
