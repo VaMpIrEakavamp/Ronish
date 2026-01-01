@@ -27,7 +27,7 @@ const CATEGORY_INFO = {
     },
     cat2: {
         name: 'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.jpg'
+        image: 'Noorset1/c2_p1_2.JPG'
     }
 };
 
@@ -98,7 +98,7 @@ const CAT_1_PRODUCTS = [
 // SECTION 4: PRODUCTS FOR CATEGORY 2
 // =============================================================================
 const CAT_2_PRODUCTS = [
-    {
+  /*  {
         id: 'c2_p1',
         name: 'Brown cat eye',
         price: 250,
@@ -126,7 +126,7 @@ const CAT_2_PRODUCTS = [
             'Noorset2/c2_p2_4.JPG',
             'Noorset2/c2_p2_5.JPG'
         ]
-    },
+    },*/
     {
         id: 'c2_p3',
         name: 'MEHRAJ',
