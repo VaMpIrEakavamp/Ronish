@@ -1,12 +1,12 @@
 // =============================================================================
-// SECTION 1: GENERAL CONFIGURATION
+// 📸 SECTION 1: GENERAL CONFIGURATION
 // =============================================================================
 const CONFIG = {
     email: 'ronishchhabraartistry@gmail.com',
     instagram: 'https://www.instagram.com/ronishchhabraartistry?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     whatsapp: '+919592150870',
 
-    // ANNOUNCEMENT BAR 
+    // 📢 ANNOUNCEMENT BAR 
     showAnnouncement: true,
     announcementText: "✨ Free Shipping on orders above ₹2000 | DM for Customizations ✨",
 
@@ -18,7 +18,7 @@ const CONFIG = {
 };
 
 // =============================================================================
-// SECTION 2: MAIN CATEGORIES SETUP
+// 💅 SECTION 2: MAIN CATEGORIES SETUP
 // =============================================================================
 const CATEGORY_INFO = {
     cat1: {
@@ -27,12 +27,12 @@ const CATEGORY_INFO = {
     },
     cat2: {
         name: 'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.JPG'
+        image: 'Noorset1/c2_p1_2.jpg'
     }
 };
 
 // =============================================================================
-// SECTION 3: PRODUCTS FOR CATEGORY 1
+// 📦 SECTION 3: PRODUCTS FOR CATEGORY 1
 // =============================================================================
 const CAT_1_PRODUCTS = [
     {
@@ -95,38 +95,9 @@ const CAT_1_PRODUCTS = [
 ];
 
 // =============================================================================
-// SECTION 4: PRODUCTS FOR CATEGORY 2
+// 📦 SECTION 4: PRODUCTS FOR CATEGORY 2
 // =============================================================================
 const CAT_2_PRODUCTS = [
-  /*  {
-        id: 'c2_p1',
-        name: 'Brown cat eye',
-        price: 250,
-        description: 'Intricate designs for the big day.',
-        cover: 'Noorset1/c2_p1_2.JPG',
-        gallery: [
-            'Noorset1/c2_p1_1.JPG',
-            'Noorset1/c2_p1_2.JPG',
-            'Noorset1/c2_p1_3.JPG',
-            'Noorset1/c2_p1_4.JPG',
-            'Noorset1/c2_p1_5.JPG',
-            'Noorset1/c2_p1_6.JPG'
-        ]
-    },
-    {
-        id: 'c2_p2',
-        name: 'brown cat eye with glitter',
-        price: 250,
-        description: 'Bold colors and statement pieces.',
-        cover: 'Noorset2/c2_p2_1.JPG',
-        gallery: [
-            'Noorset2/c2_p2_1.JPG',
-            'Noorset2/c2_p2_2.JPG',
-            'Noorset2/c2_p2_3.JPG',
-            'Noorset2/c2_p2_4.JPG',
-            'Noorset2/c2_p2_5.JPG'
-        ]
-    },*/
     {
         id: 'c2_p3',
         name: 'MEHRAJ',
@@ -156,7 +127,7 @@ const CAT_2_PRODUCTS = [
 ];
 
 // =============================================================================
-// SECTION 5: SERVICES DATA
+// 🛠️ SECTION 5: SERVICES DATA
 // =============================================================================
 const SERVICES = [
     { id: 'consult', name: 'Design Consultation', duration: '30 min', price: 250 },
@@ -165,7 +136,7 @@ const SERVICES = [
 ];
 
 // =============================================================================
-// SYSTEM LOGIC
+// ⚙️ SYSTEM LOGIC
 // =============================================================================
 
 // Combine Data for Internal Use
@@ -187,7 +158,7 @@ const SHOP_DATA = [
 // App State
 let state = {
     currentPage: 'home',
-    // LOCAL STORAGE LOGIC
+    // 💾 LOCAL STORAGE LOGIC
     cart: JSON.parse(localStorage.getItem('ronish_cart')) || [],
     mobileMenuOpen: false,
     selectedService: null,
@@ -197,7 +168,7 @@ let state = {
     policyOpen: false    
 };
 
-// HELPER: Save Cart to Storage
+// 💾 HELPER: Save Cart to Storage
 function saveCartToStorage() {
     localStorage.setItem('ronish_cart', JSON.stringify(state.cart));
 }
@@ -215,7 +186,7 @@ function findProduct(id) {
 }
 
 // ---------------------------------------------------------
-// HISTORY & NAVIGATION HANDLING
+// 🔄 HISTORY & NAVIGATION HANDLING
 // ---------------------------------------------------------
 
 function init() {
@@ -288,7 +259,7 @@ function backToProductList() {
 
 function toggleMobileMenu() {
     state.mobileMenuOpen = !state.mobileMenuOpen;
-    render();
+    render(); 
 }
 
 // NEW: Lightbox Handler
@@ -304,7 +275,7 @@ function togglePolicy() {
 }
 
 // ---------------------------------------------------------
-// CART LOGIC
+// 🛒 CART LOGIC
 // ---------------------------------------------------------
 
 function addToCart(productId) {
@@ -328,17 +299,17 @@ function addToCart(productId) {
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        state.cart.push({
-            ...product,
-            cartId: cartItemId,
-            size: selectedSize,
-            quantity: 1
+        state.cart.push({ 
+            ...product, 
+            cartId: cartItemId, // Critical for remove/update
+            size: selectedSize, 
+            quantity: 1 
         });
     }
 
     saveCartToStorage();
     showNotification(`Added ${product.name} (${selectedSize})`);
-    render();
+    render(); 
 }
 
 function updateQuantity(cartItemId, change) {
@@ -370,11 +341,11 @@ function getCartCount() {
 
 function showNotification(msg, type = 'success') {
     const container = document.getElementById('notification-container');
-    if (!container) return;
-
+    if (!container) return; 
+    
     const colorClass = type === 'error' ? 'border-red-500' : 'border-beige';
     const icon = type === 'error' ? 'x-circle' : 'check';
-
+    
     container.innerHTML = `
         <div class="bg-dark text-white px-6 py-4 rounded-lg shadow-2xl flex items-center border-l-4 ${colorClass} slide-up">
             <i data-lucide="${icon}" class="h-5 w-5 mr-3 text-beige"></i>
@@ -383,7 +354,7 @@ function showNotification(msg, type = 'success') {
     `;
     lucide.createIcons();
     container.classList.remove('hidden');
-
+    
     setTimeout(() => {
         container.classList.add('hidden');
     }, 3000);
@@ -480,22 +451,34 @@ function getHeaderHTML() {
 
 function getHeroHTML() {
     return `
-    <section class="relative min-h-[65vh] md:min-h-screen flex items-center justify-center py-20 text-center text-white overflow-hidden fade-in bg-gray-900">
-        <div class="absolute inset-0 bg-black">
+    <!-- SPLIT LAYOUT FOR PC & STACKED FOR MOBILE (NO OVERLAP) -->
+    <div class="flex flex-col md:flex-row h-auto md:h-screen w-full bg-dark">
+        
+        <!-- LEFT/TOP: IMAGE -->
+        <div class="w-full md:w-1/2 h-[50vh] md:h-full relative bg-black order-1 md:order-1">
             <img src="${CONFIG.heroBanner}" alt="Elegant Nail Art" 
-                 class="w-full h-full object-cover object-center opacity-50" 
-                 onerror="this.style.opacity='0.3'" />
+                 class="absolute inset-0 w-full h-full object-cover opacity-90" 
+                 onerror="this.style.opacity='0.5'" />
         </div>
-        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-            <p class="text-lg md:text-xl font-medium mb-4 text-beige tracking-wide">The Art of Luxury, Customized for You.</p>
-            <h2 class="text-4xl md:text-7xl font-bold mb-6 leading-tight font-serif">
+
+        <!-- RIGHT/BOTTOM: TEXT -->
+        <!-- UPDATED: Added 'cursor-default select-none' to prevent text selection cursor -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center text-center p-10 md:p-20 bg-dark text-white order-2 md:order-2 cursor-default select-none">
+            <p class="text-sm md:text-xl font-medium mb-4 text-beige tracking-[0.2em] uppercase">The Art of Luxury</p>
+            
+            <h2 class="text-3xl md:text-6xl font-bold mb-6 leading-tight font-serif">
                 Designed to Make You <br/> <span class="text-beige italic">Feel Extraordinary.</span>
             </h2>
-            <p class="text-base md:text-xl mb-10 max-w-2xl mx-auto text-gray-200 font-light">
-                Exclusive press-on designs and bespoke artistry sessions curated by Chhabra Artistry.
-            </p>
+            
+            <!-- Signature Style Text -->
+            <div class="mb-8">
+                <p class="text-lg md:text-2xl text-beige font-serif italic leading-relaxed opacity-90">
+                    "Exclusive press-on designs and bespoke artistry sessions curated by Chhabra Artistry."
+                </p>
+                <div class="w-16 h-0.5 bg-gray-700 mx-auto mt-6"></div>
+            </div>
         </div>
-    </section>
+    </div>
     
     <section class="py-12 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 bg-light">
         <h3 class="text-3xl md:text-4xl font-bold text-center text-dark mb-10 md:mb-16 font-serif">Your Exclusive Options</h3>
@@ -601,7 +584,6 @@ function getShopHTML() {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                         ${product.gallery.map(img => `
                         <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:scale-[1.02] transition duration-300">
-                            <!-- UPDATED: Added toggleLightbox to gallery images -->
                             <img src="${img}" class="w-full h-full object-cover cursor-pointer" 
                                  onclick="toggleLightbox('${img}')"
                                  onerror="this.style.opacity='0.2'">
@@ -864,7 +846,7 @@ function getFooterHTML() {
             </div>
             
             <div class="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-center items-center text-sm text-gray-500 space-y-2 md:space-y-0 md:space-x-6">
-                <p>&copy; 2025 RONISH Chhabra Artistry. All rights reserved. | OG | v1.2</p>
+                <p>&copy; 2025 RONISH Chhabra Artistry. All rights reserved. | OG | v1.0</p>
                 <button onclick="togglePolicy()" class="hover:text-beige underline transition">Shipping & Returns Policy</button>
             </div>
         </div>
