@@ -28,6 +28,10 @@ const CATEGORY_INFO = {
     cat2: {
         name: 'NOOR - For the glow that never fades.',
         image: 'Noorset1/c2_p1_2.jpg'
+    },
+    cat3: {
+        name: 'SHEHZADI : Made for modern princesses.',
+        image: 'Mainset1/main1.jpg'
     }
 };
 
@@ -122,6 +126,51 @@ const CAT_2_PRODUCTS = [
             'Noorset4/c2_p4_2.JPG',
             'Noorset4/c2_p4_3.JPG',
             'Noorset4/c2_p4_4.JPG'
+        ]
+    }
+];
+// =============================================================================
+// 📦 SECTION 4: PRODUCTS FOR CATEGORY 3
+// =============================================================================
+const CAT_3_PRODUCTS = [
+    {
+        id: 'c3_p1',
+        name: 'DILRUBA',
+        price: 1999,
+        description: 'Premium style.',
+        cover: 'Zadiset1/c3_p1_1.jpg',
+        gallery: [
+            'Zadiset1/c3_p1_1.jpg',
+            'Zadiset1/c3_p1_2.jpg',
+            'Zadiset1/c3_p1_3.jpg',
+            'Zadiset1/c3_p1_4.jpg'
+        ]
+    },
+    {
+        id: 'c3_p2',
+        name: 'Ishqiya',
+        price: 1499,
+        description: 'Modern abstract hand-painted art.',
+        cover: 'Zadiset2/c3_p2_1.JPG',
+        gallery: [
+            'Zadiset2/c3_p2_1.JPG',
+            'Zadiset2/c3_p2_2.JPG',
+            'Zadiset2/c3_p2_3.JPG',
+            'Zadiset2/c3_p2_4.JPG',
+            'Zadiset2/c3_p2_5.JPG'
+        ]
+    }
+       {
+        id: 'c3_p3',
+        name: 'zeenat',
+        price: 1499,
+        description: 'Modern abstract hand-painted art.',
+        cover: 'Zadiset3/c3_p3_1.JPG',
+        gallery: [
+            'Zadiset3/c3_p3_1.JPG',
+            'Zadiset3/c3_p3_2.JPG',
+            'Zadiset3/c3_p3_3.JPG',
+            'Zadiset3/c3_p3_4.JPG'
         ]
     }
 ];
