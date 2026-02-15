@@ -159,8 +159,8 @@ const CAT_3_PRODUCTS = [
             'Zadiset2/c3_p2_4.JPG',
             'Zadiset2/c3_p2_5.JPG'
         ]
-    }
-       {
+    },
+    {
         id: 'c3_p3',
         name: 'zeenat',
         price: 1499,
