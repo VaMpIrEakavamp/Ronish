@@ -27,11 +27,11 @@ const CATEGORY_INFO = {
     },
     cat2: {
         name: 'NOOR - For the glow that never fades.',
-        image: 'Noorset1/c2_p1_2.jpg'
+        image: 'Noorset1/c2_p1_2.JPG'
     },
     cat3: {
         name: 'SHEHZADI : Made for modern princesses.',
-        image: 'Mainset1/main1.jpg'
+        image: 'Zadiset1/c3_p1_1.jpg'
     }
 };
 
@@ -102,6 +102,35 @@ const CAT_1_PRODUCTS = [
 // 📦 SECTION 4: PRODUCTS FOR CATEGORY 2
 // =============================================================================
 const CAT_2_PRODUCTS = [
+/* {
+        id: 'c2_p1',
+        name: 'Brown cat eye',
+        price: 250,
+        description: 'Intricate designs for the big day.',
+        cover: 'Noorset1/c2_p1_2.JPG',
+        gallery: [
+            'Noorset1/c2_p1_1.JPG',
+            'Noorset1/c2_p1_2.JPG',
+            'Noorset1/c2_p1_3.JPG',
+            'Noorset1/c2_p1_4.JPG',
+            'Noorset1/c2_p1_5.JPG',
+            'Noorset1/c2_p1_6.JPG'
+        ]
+    },
+    {
+        id: 'c2_p2',
+        name: 'brown cat eye with glitter',
+        price: 250,
+        description: 'Bold colors and statement pieces.',
+        cover: 'Noorset2/c2_p2_1.JPG',
+        gallery: [
+            'Noorset2/c2_p2_1.JPG',
+            'Noorset2/c2_p2_2.JPG',
+            'Noorset2/c2_p2_3.JPG',
+            'Noorset2/c2_p2_4.JPG',
+            'Noorset2/c2_p2_5.JPG'
+        ]
+    },*/
     {
         id: 'c2_p3',
         name: 'MEHRAJ',
@@ -129,6 +158,7 @@ const CAT_2_PRODUCTS = [
         ]
     }
 ];
+
 // =============================================================================
 // 📦 SECTION 4: PRODUCTS FOR CATEGORY 3
 // =============================================================================
@@ -201,6 +231,13 @@ const SHOP_DATA = [
         name: CATEGORY_INFO.cat2.name,
         image: CATEGORY_INFO.cat2.image,
         products: CAT_2_PRODUCTS
+    },
+    // ✅ FIXED: Added Category 3 Here
+    {
+        id: 'main3',
+        name: CATEGORY_INFO.cat3.name,
+        image: CATEGORY_INFO.cat3.image,
+        products: CAT_3_PRODUCTS
     }
 ];
 
@@ -567,6 +604,7 @@ function getShopHTML() {
                 <h2 class="text-3xl md:text-4xl font-bold text-dark mb-3 font-serif">Select a Category</h2>
                 <p class="text-gray-600">Choose a collection to explore.</p>
             </div>
+            <!-- UPDATED: 2 Columns on Desktop, 1 on Mobile -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 ${SHOP_DATA.map(cat => `
                 <div onclick="openCategory('${cat.id}')" class="relative h-64 md:h-80 rounded-xl overflow-hidden cursor-pointer group shadow-lg">
@@ -633,6 +671,7 @@ function getShopHTML() {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                         ${product.gallery.map(img => `
                         <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:scale-[1.02] transition duration-300">
+                            <!-- UPDATED: Added toggleLightbox to gallery images -->
                             <img src="${img}" class="w-full h-full object-cover cursor-pointer" 
                                  onclick="toggleLightbox('${img}')"
                                  onerror="this.style.opacity='0.2'">
