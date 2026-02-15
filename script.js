@@ -31,7 +31,7 @@ const CATEGORY_INFO = {
     },
     cat3: {
         name: 'SHEHZADI : Made for modern princesses.',
-        image: 'Zadiset1/c3_p1_1.jpg'
+        image: 'Zadiset1/c3_p1_1.JPG'
     }
 };
 
@@ -168,12 +168,12 @@ const CAT_3_PRODUCTS = [
         name: 'DILRUBA',
         price: 1999,
         description: 'Premium style.',
-        cover: 'Zadiset1/c3_p1_1.jpg',
+        cover: 'Zadiset1/c3_p1_1.JPG',
         gallery: [
-            'Zadiset1/c3_p1_1.jpg',
-            'Zadiset1/c3_p1_2.jpg',
-            'Zadiset1/c3_p1_3.jpg',
-            'Zadiset1/c3_p1_4.jpg'
+            'Zadiset1/c3_p1_1.JPG',
+            'Zadiset1/c3_p1_2.HEIC',
+            'Zadiset1/c3_p1_3.HEIC',
+            'Zadiset1/c3_p1_4.JPG'
         ]
     },
     {
@@ -195,12 +195,12 @@ const CAT_3_PRODUCTS = [
         name: 'zeenat',
         price: 1499,
         description: 'Modern abstract hand-painted art.',
-        cover: 'Zadiset3/c3_p3_1.JPG',
+        cover: 'Zadiset3/c3_p3_1.jpg',
         gallery: [
-            'Zadiset3/c3_p3_1.JPG',
-            'Zadiset3/c3_p3_2.JPG',
-            'Zadiset3/c3_p3_3.JPG',
-            'Zadiset3/c3_p3_4.JPG'
+            'Zadiset3/c3_p3_1.jpg',
+            'Zadiset3/c3_p3_2.jpg',
+            'Zadiset3/c3_p3_3.jpg',
+            'Zadiset3/c3_p3_4.jpg'
         ]
     }
 ];
